@@ -1,0 +1,150 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PixelTI",
+		"_postman_id": "78d24693-425d-c57f-bf9b-ca4aed62c130",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inserir usuário",
+			"request": {
+				"url": "localhost:3000/api/v1/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Henrique\",\n\t\"lastName\": \"Vilela\",\n\t\"email\": \"henrique.vilela@gec.inatel.br\",\n\t\"password\": \"senha123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Listar usuários",
+			"request": {
+				"url": "localhost:3000/api/v1/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Henrique\",\n\t\"lastName\": \"Vilela\",\n\t\"email\": \"henrique.vilela@gec.inatel.br\",\n\t\"password\": \"senha123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar usuário",
+			"request": {
+				"url": "localhost:3000/api/v1/user/595a972232010a487f1d0f8f",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Henrique\",\n\t\"lastName\": \"Vilela\",\n\t\"email\": \"henrique.vilela@gec.inatel.br\",\n\t\"password\": \"senha123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar usuário",
+			"request": {
+				"url": "localhost:3000/api/v1/user/595a955132010a487f1d0f8e",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Henrique\",\n\t\"lastName\": \"Martins Vilela\",\n\t\"email\": \"henrique.vilela@gec.inatel.br\",\n\t\"password\": \"senha12345\",\n\t\"created\": \"2017-07-03T19:04:31.902Z\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar usuário",
+			"request": {
+				"url": "localhost:3000/api/v1/user/595a91910adb7b4614dbc343",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login de usuário",
+			"request": {
+				"url": "localhost:3000/api/v1/user/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"henrique.vilela@gec.inatel.br\",\n\t\"password\": \"senha123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
