@@ -36,5 +36,7 @@ node server
 http://localhost:3000
 ```
 
+**Obs:** Arquivo de coleção do POSTMAN incluído
+
 ## Autor
 **Henrique Martins Vilela**
