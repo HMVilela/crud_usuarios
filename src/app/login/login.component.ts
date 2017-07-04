@@ -23,19 +23,20 @@ export class LoginComponent implements OnInit {
   registrationDialog: boolean = false;
 
   
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
+  rfirstName: string;
+  rlastName: string;
+  remail: string;
+  rpassword: string;
 
   ngOnInit() {
   }
 
-  login(email, password) {
+  login() {
     var credentials = {
-      email: email,
-      password: password
+      email: this.loginEmail,
+      password: this.loginPassword
     }
+    console.log(credentials);
     this._usersService.login(credentials)
       .subscribe(data => {
         this.loginElement = data.token;
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
           this._usersService.saveData(this.loginElement);
           this.router.navigate(["/users"]);
         } else {
-          this.info = "Não rolou";
+          this.info = "Algo errado";
         }        
       });
   }
@@ -54,10 +55,10 @@ export class LoginComponent implements OnInit {
 
   registration() {
     var newUser = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      password: this.password
+      firstName: this.rfirstName,
+      lastName: this.rlastName,
+      email: this.remail,
+      password: this.rpassword
     };
     this._usersService.saveUser(newUser)
       .subscribe(data => {

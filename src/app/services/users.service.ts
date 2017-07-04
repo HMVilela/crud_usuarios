@@ -10,6 +10,8 @@ export class UsersService {
     data: string;
 
     getUsers() {
+        var headers = new Headers();
+        headers.append('Authorization', 'JWT ' + this.getData());
         return this._http.get('/api/v1/users')
             .map(res => res.json());
     }

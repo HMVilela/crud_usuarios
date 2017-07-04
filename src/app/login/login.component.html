@@ -12,10 +12,10 @@
         <p-header>
             <span class="glyphicon glyphicon-user"></span><span>&nbsp;&nbsp;Cadastro de novo usuário:</span>
         </p-header>
-        <div style="float: right;"><span>Nome:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="firstName" style="width: 301px; margin-top: 5px;"/></div><br>
-        <div style="float: right;"><span>Sobrenome:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="lastName" style="width: 301px; margin-top: 5px;"/></div><br>
-        <div style="float: right;"><span>E-mail:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="email" style="width: 301px; margin-top: 5px;"/></div><br>
-        <div style="float: right;"><span>Senha:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="password" style="width: 301px; margin-top: 5px;"/></div><br>
+        <div style="float: right;"><span>Nome:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="rfirstName" style="width: 301px; margin-top: 5px;" required="true"/></div><br>
+        <div style="float: right;"><span>Sobrenome:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="rlastName" style="width: 301px; margin-top: 5px;" required="true"/></div><br>
+        <div style="float: right;"><span>E-mail:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="remail" style="width: 301px; margin-top: 5px;" required="true"></div><br>
+        <div style="float: right;"><span>Senha:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="rpassword" style="width: 301px; margin-top: 5px;" required="true"/></div><br>
         <p-footer>
           <hr>
             <button pButton type="button" (click)="registration()" label="Cadastrar" style="float: right; margin-right: 15px; margin-bottom: 15px;"></button>

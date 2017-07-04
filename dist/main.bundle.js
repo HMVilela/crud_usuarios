@@ -340,7 +340,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <form class=\"form-signin\">\n    <h2 class=\"form-signin-heading\">Por favor, faça o login</h2>\n    <input type=\"text\" class=\"form-control\" name=\"username\" placeholder=\"E-mail\" [(ngModel)]=\"loginEmail\" required=\"true\" autofocus=\"\" style=\"margin-top: 25px;\"/>\n    <input type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"Senha\" [(ngModel)]=\"loginPassword\" required=\"true\" style=\"margin-top: 10px; margin-bottom: 15px;\"/>\n    <button class=\"btn btn-lg btn-primary btn-block\" (click)=\"login(email, password)\" style=\"margin-top: 25px;\">Login</button>\n    <a class=\"btn btn-lg btn-default btn-block\" (click)=\"showRegistrationDialog()\">Criar um novo usuário</a>\n  </form>\n</div>\n\n<p-dialog [(visible)]=\"registrationDialog\">        \n        <p-header>\n            <span class=\"glyphicon glyphicon-user\"></span><span>&nbsp;&nbsp;Cadastro de novo usuário:</span>\n        </p-header>\n        <div style=\"float: right;\"><span>Nome:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"firstName\" style=\"width: 301px; margin-top: 5px;\"/></div><br>\n        <div style=\"float: right;\"><span>Sobrenome:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"lastName\" style=\"width: 301px; margin-top: 5px;\"/></div><br>\n        <div style=\"float: right;\"><span>E-mail:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"email\" style=\"width: 301px; margin-top: 5px;\"/></div><br>\n        <div style=\"float: right;\"><span>Senha:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"password\" style=\"width: 301px; margin-top: 5px;\"/></div><br>\n        <p-footer>\n          <hr>\n            <button pButton type=\"button\" (click)=\"registration()\" label=\"Cadastrar\" style=\"float: right; margin-right: 15px; margin-bottom: 15px;\"></button>\n        </p-footer>\n    </p-dialog>"
+module.exports = "<div class=\"wrapper\">\n  <form class=\"form-signin\">\n    <h2 class=\"form-signin-heading\">Por favor, faça o login</h2>\n    <input type=\"text\" class=\"form-control\" name=\"username\" placeholder=\"E-mail\" [(ngModel)]=\"loginEmail\" required=\"true\" autofocus=\"\" style=\"margin-top: 25px;\"/>\n    <input type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"Senha\" [(ngModel)]=\"loginPassword\" required=\"true\" style=\"margin-top: 10px; margin-bottom: 15px;\"/>\n    <button class=\"btn btn-lg btn-primary btn-block\" (click)=\"login(email, password)\" style=\"margin-top: 25px;\">Login</button>\n    <a class=\"btn btn-lg btn-default btn-block\" (click)=\"showRegistrationDialog()\">Criar um novo usuário</a>\n  </form>\n</div>\n\n<p-dialog [(visible)]=\"registrationDialog\">        \n        <p-header>\n            <span class=\"glyphicon glyphicon-user\"></span><span>&nbsp;&nbsp;Cadastro de novo usuário:</span>\n        </p-header>\n        <div style=\"float: right;\"><span>Nome:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"rfirstName\" style=\"width: 301px; margin-top: 5px;\" required=\"true\"/></div><br>\n        <div style=\"float: right;\"><span>Sobrenome:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"rlastName\" style=\"width: 301px; margin-top: 5px;\" required=\"true\"/></div><br>\n        <div style=\"float: right;\"><span>E-mail:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"remail\" style=\"width: 301px; margin-top: 5px;\" required=\"true\"></div><br>\n        <div style=\"float: right;\"><span>Senha:&nbsp;&nbsp;</span><input type=\"text\" pInputText [(ngModel)]=\"rpassword\" style=\"width: 301px; margin-top: 5px;\" required=\"true\"/></div><br>\n        <p-footer>\n          <hr>\n            <button pButton type=\"button\" (click)=\"registration()\" label=\"Cadastrar\" style=\"float: right; margin-right: 15px; margin-bottom: 15px;\"></button>\n        </p-footer>\n    </p-dialog>"
 
 /***/ }),
 
@@ -372,12 +372,13 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
-    LoginComponent.prototype.login = function (email, password) {
+    LoginComponent.prototype.login = function () {
         var _this = this;
         var credentials = {
-            email: email,
-            password: password
+            email: this.loginEmail,
+            password: this.loginPassword
         };
+        console.log(credentials);
         this._usersService.login(credentials)
             .subscribe(function (data) {
             _this.loginElement = data.token;
@@ -386,7 +387,7 @@ var LoginComponent = (function () {
                 _this.router.navigate(["/users"]);
             }
             else {
-                _this.info = "Não rolou";
+                _this.info = "Algo errado";
             }
         });
     };
@@ -396,10 +397,10 @@ var LoginComponent = (function () {
     LoginComponent.prototype.registration = function () {
         var _this = this;
         var newUser = {
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email,
-            password: this.password
+            firstName: this.rfirstName,
+            lastName: this.rlastName,
+            email: this.remail,
+            password: this.rpassword
         };
         this._usersService.saveUser(newUser)
             .subscribe(function (data) {
@@ -448,6 +449,8 @@ var UsersService = (function () {
         this._http = _http;
     }
     UsersService.prototype.getUsers = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]();
+        headers.append('Authorization', 'JWT ' + this.getData());
         return this._http.get('/api/v1/users')
             .map(function (res) { return res.json(); });
     };
