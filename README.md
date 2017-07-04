@@ -10,6 +10,8 @@
 
 **PrimeNG:** Coleção de módulos e diretivas baseados no Angular.
 
+**API Rest:** Rest endpoints disponíveis na API
+
 
 ## Instalação
 
