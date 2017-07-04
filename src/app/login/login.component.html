@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Por favor, faça o login</h2>
+    <input type="text" class="form-control" name="username" placeholder="E-mail" [(ngModel)]="loginEmail" required="true" autofocus="" style="margin-top: 25px;"/>
+    <input type="password" class="form-control" name="password" placeholder="Senha" [(ngModel)]="loginPassword" required="true" style="margin-top: 10px; margin-bottom: 15px;"/>
+    <button class="btn btn-lg btn-primary btn-block" (click)="login(email, password)" style="margin-top: 25px;">Login</button>
+    <a class="btn btn-lg btn-default btn-block" (click)="showRegistrationDialog()">Criar um novo usuário</a>
+  </form>
+</div>
+
+<p-dialog [(visible)]="registrationDialog">        
+        <p-header>
+            <span class="glyphicon glyphicon-user"></span><span>&nbsp;&nbsp;Cadastro de novo usuário:</span>
+        </p-header>
+        <div style="float: right;"><span>Nome:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="firstName" style="width: 301px; margin-top: 5px;"/></div><br>
+        <div style="float: right;"><span>Sobrenome:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="lastName" style="width: 301px; margin-top: 5px;"/></div><br>
+        <div style="float: right;"><span>E-mail:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="email" style="width: 301px; margin-top: 5px;"/></div><br>
+        <div style="float: right;"><span>Senha:&nbsp;&nbsp;</span><input type="text" pInputText [(ngModel)]="password" style="width: 301px; margin-top: 5px;"/></div><br>
+        <p-footer>
+          <hr>
+            <button pButton type="button" (click)="registration()" label="Cadastrar" style="float: right; margin-right: 15px; margin-bottom: 15px;"></button>
+        </p-footer>
+    </p-dialog>
